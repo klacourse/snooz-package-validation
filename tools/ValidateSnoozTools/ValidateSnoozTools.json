@@ -1,0 +1,25 @@
+{
+    "package_name": "ValidateSnoozTools",
+    "package_version": "0.0.0",
+    "package_api_version": "1.0.0",
+    "package_author": "CEAMS",
+    "package_url": "https://github.com/klacourse/snooz-package-validation",
+    "package_description": "Tools to assist in validating the Snooz Toolbox.",
+    "items": 
+    [        
+    {
+        "item_name": "ValidateSpindleDetectionA7",
+        "item_type": "tool",
+        "item_version": "0.0.0",
+        "item_hooks": [
+            {
+                "endpoint_name": "menu_endpoint",
+                "parameters": {
+                    "menu_category": "Validate",
+                    "menu_label": "Validate Spindle Detection A7"
+                }
+            }
+        ]
+    }
+    ]
+}
