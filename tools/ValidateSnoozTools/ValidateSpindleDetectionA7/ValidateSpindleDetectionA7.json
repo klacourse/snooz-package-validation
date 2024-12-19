@@ -80,6 +80,11 @@
             "deleteable": false
         },
         {
+            "package_name": "CEAMSTools",
+            "package_version": "6.10.0",
+            "deleteable": false
+        },
+        {
             "package_name": "CEAMSModules",
             "package_version": "6.10.0"
         }
@@ -153,8 +158,8 @@
                 "package": {
                     "package_name": "CEAMSModules"
                 },
-                "pos_x": 1679.9999999999998,
-                "pos_y": -264.9999999999999
+                "pos_x": 1622.0,
+                "pos_y": -259.9999999999999
             },
             {
                 "cls": "EventCombine",
@@ -236,8 +241,8 @@
                         "value": "",
                         "sub_plugs": {},
                         "connections": {
-                            "22814e52-199e-48d8-bfcb-1ccf37bd10d0": [
-                                "events2"
+                            "b116c7c0-1687-4493-bcbc-653d363cda30": [
+                                "events1"
                             ]
                         }
                     }
@@ -248,8 +253,8 @@
                 "package": {
                     "package_name": "CEAMSModules"
                 },
-                "pos_x": 1369.9999999999998,
-                "pos_y": 110.0
+                "pos_x": 1319.0,
+                "pos_y": 57.0
             },
             {
                 "cls": "EventCombine",
@@ -341,8 +346,8 @@
                 "package": {
                     "package_name": "CEAMSModules"
                 },
-                "pos_x": 1366.2499999999998,
-                "pos_y": 366.24999999999983
+                "pos_x": 1361.25,
+                "pos_y": 336.2499999999998
             },
             {
                 "cls": "FilterEvents",
@@ -463,6 +468,9 @@
                         "connections": {
                             "22814e52-199e-48d8-bfcb-1ccf37bd10d0": [
                                 "events_valid_window"
+                            ],
+                            "9b6f73d8-8271-402d-9f49-8c729a375213": [
+                                "events1"
                             ]
                         }
                     },
@@ -479,8 +487,8 @@
                 "package": {
                     "package_name": "CEAMSModules"
                 },
-                "pos_x": 1048.7499999999993,
-                "pos_y": 607.4999999999997
+                "pos_x": 1049.749999999999,
+                "pos_y": 607.4999999999995
             },
             {
                 "cls": "EventCompare",
@@ -510,7 +518,7 @@
                         "value": "",
                         "sub_plugs": {},
                         "connections": {
-                            "3e55548d-e735-4e44-bfec-07f8f4140573": "events"
+                            "b116c7c0-1687-4493-bcbc-653d363cda30": "events"
                         }
                     },
                     "event2_name": {
@@ -580,8 +588,8 @@
                 "package": {
                     "package_name": "CEAMSModules"
                 },
-                "pos_x": 1908.7499999999995,
-                "pos_y": 418.7499999999999
+                "pos_x": 1786.7499999999995,
+                "pos_y": 426.7499999999999
             },
             {
                 "cls": "Constant",
@@ -1086,7 +1094,7 @@
                     },
                     "spindle_gen_param": {
                         "name": "spindle_gen_param",
-                        "value": "{'min_duration': 0.5, 'max_duration': 2.5, 'sleep_stage_sel': ['2', '3'], 'in_cycle': 1, 'exclude_nremp': 0, 'exclude_remp': 1}",
+                        "value": "{'min_duration': 0.5, 'max_duration': 2.5, 'sleep_stage_sel': ['2'], 'in_cycle': 0, 'exclude_nremp': 0, 'exclude_remp': 0}",
                         "sub_plugs": {},
                         "connections": {}
                     },
@@ -1201,7 +1209,7 @@
                     },
                     "spindle_gen_param": {
                         "name": "spindle_gen_param",
-                        "value": "{'min_duration': 0.5, 'max_duration': 2.5, 'sleep_stage_sel': ['2', '3'], 'in_cycle': 1, 'exclude_nremp': 0, 'exclude_remp': 1}",
+                        "value": "{'min_duration': 0.5, 'max_duration': 2.5, 'sleep_stage_sel': ['2'], 'in_cycle': 0, 'exclude_nremp': 0, 'exclude_remp': 0}",
                         "sub_plugs": {},
                         "connections": {}
                     },
@@ -2937,7 +2945,7 @@
                     },
                     "stages": {
                         "name": "stages",
-                        "value": "2,3",
+                        "value": "2",
                         "sub_plugs": {},
                         "connections": {}
                     },
@@ -2961,13 +2969,13 @@
                     },
                     "exclude_remp": {
                         "name": "exclude_remp",
-                        "value": "1",
+                        "value": "0",
                         "sub_plugs": {},
                         "connections": {}
                     },
                     "in_cycle": {
                         "name": "in_cycle",
-                        "value": "1",
+                        "value": "0",
                         "sub_plugs": {},
                         "connections": {}
                     }
@@ -3414,6 +3422,194 @@
                 },
                 "pos_x": -633.0,
                 "pos_y": -205.0
+            },
+            {
+                "cls": "EventCombine",
+                "name": "EventCombine",
+                "metadata": {},
+                "file_location": "",
+                "module_label": "Event Combine",
+                "module_category": "Events Utilities",
+                "module_options": {},
+                "inputs": {
+                    "events1": {
+                        "name": "events1",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {
+                            "d9ec15ea-c861-4e61-ac0c-669d63786e23": "events_selected"
+                        }
+                    },
+                    "event1_name": {
+                        "name": "event1_name",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {}
+                    },
+                    "events2": {
+                        "name": "events2",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {}
+                    },
+                    "event2_name": {
+                        "name": "event2_name",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {}
+                    },
+                    "channel1_name": {
+                        "name": "channel1_name",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {}
+                    },
+                    "channel2_name": {
+                        "name": "channel2_name",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {}
+                    },
+                    "behavior": {
+                        "name": "behavior",
+                        "value": "append",
+                        "sub_plugs": {},
+                        "connections": {}
+                    },
+                    "new_event_group": {
+                        "name": "new_event_group",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {}
+                    },
+                    "new_event_name": {
+                        "name": "new_event_name",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {}
+                    },
+                    "new_event_chan": {
+                        "name": "new_event_chan",
+                        "value": "C3",
+                        "sub_plugs": {},
+                        "connections": {}
+                    }
+                },
+                "outputs": {
+                    "events": {
+                        "name": "events",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {
+                            "b116c7c0-1687-4493-bcbc-653d363cda30": [
+                                "events2"
+                            ]
+                        }
+                    }
+                },
+                "module": "CEAMSModules.EventCombine",
+                "identifier": "9b6f73d8-8271-402d-9f49-8c729a375213",
+                "activation_state": "activated",
+                "package": {
+                    "package_name": "CEAMSModules"
+                },
+                "pos_x": 1350.0,
+                "pos_y": 612.0
+            },
+            {
+                "cls": "EventCombine",
+                "name": "EventCombine",
+                "metadata": {},
+                "file_location": "",
+                "module_label": "Event Combine",
+                "module_category": "Events Utilities",
+                "module_options": {},
+                "inputs": {
+                    "events1": {
+                        "name": "events1",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {
+                            "3e55548d-e735-4e44-bfec-07f8f4140573": "events"
+                        }
+                    },
+                    "event1_name": {
+                        "name": "event1_name",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {}
+                    },
+                    "events2": {
+                        "name": "events2",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {
+                            "9b6f73d8-8271-402d-9f49-8c729a375213": "events"
+                        }
+                    },
+                    "event2_name": {
+                        "name": "event2_name",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {}
+                    },
+                    "channel1_name": {
+                        "name": "channel1_name",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {}
+                    },
+                    "channel2_name": {
+                        "name": "channel2_name",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {}
+                    },
+                    "behavior": {
+                        "name": "behavior",
+                        "value": "intersection",
+                        "sub_plugs": {},
+                        "connections": {}
+                    },
+                    "new_event_group": {
+                        "name": "new_event_group",
+                        "value": "spindle",
+                        "sub_plugs": {},
+                        "connections": {}
+                    },
+                    "new_event_name": {
+                        "name": "new_event_name",
+                        "value": "a7_viewed",
+                        "sub_plugs": {},
+                        "connections": {}
+                    },
+                    "new_event_chan": {
+                        "name": "new_event_chan",
+                        "value": "C3",
+                        "sub_plugs": {},
+                        "connections": {}
+                    }
+                },
+                "outputs": {
+                    "events": {
+                        "name": "events",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {
+                            "22814e52-199e-48d8-bfcb-1ccf37bd10d0": [
+                                "events2"
+                            ]
+                        }
+                    }
+                },
+                "module": "CEAMSModules.EventCombine",
+                "identifier": "b116c7c0-1687-4493-bcbc-653d363cda30",
+                "activation_state": "activated",
+                "package": {
+                    "package_name": "CEAMSModules"
+                },
+                "pos_x": 1607.0,
+                "pos_y": 172.0
             }
         ]
     }
