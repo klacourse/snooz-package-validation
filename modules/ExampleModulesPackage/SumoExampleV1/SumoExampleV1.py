@@ -201,23 +201,6 @@ class SumoExampleV1(SciNode):
         sample_rate = signals[0].sample_rate
         resample_rate = 100
         signals = [downsample(butter_bandpass_filter(x.samples, 0.3, 30.0, sample_rate, 10), sample_rate, resample_rate) for x in signals]
-        
-        # for signal in signals:  # I think there is no need to loop over the signals bc of having dataloader
-        #     if DEBUG: 
-        #         print(f"SpindleDetectorA7.compute signal {i_signal} starts at {time.strftime('%H:%M:%S', time.gmtime(signal.start_time))}")
-        #         i_signal += 1
-
-        #     data = signal.samples
-            
-            # filter and downsample (already done above on all the epochs together)
-            # sample_rate = signal.sample_rate
-            # resample_rate = 100
-            # data = downsample(butter_bandpass_filter(data, 0.3, 30.0, sample_rate, 10), sample_rate, resample_rate)
-
-            # set up the model
-
-
-            # predict the spindles
 
         # Create a dataset and dataloader
         dataset = SimpleDataset(signals)
@@ -225,12 +208,12 @@ class SumoExampleV1(SciNode):
 
         # Set up the model and its config
         current_dir = os.path.dirname(os.path.abspath(__file__))
-        model_path = current_dir + '/final.ckpt'  # added by me
+        model_path = current_dir + '/final.ckpt'  
         config = Config('predict', create_dirs=False)
 
         model = get_model(model_path, config)
         trainer = pl.Trainer(num_sanity_val_steps=0, logger=False)
-        # gpu = torch.cuda.is_available()  # added by me
+        # gpu = torch.cuda.is_available()  
         # trainer = pl.Trainer(gpus=int(gpu), num_sanity_val_steps=0, logger=False)
 
         # Predict the spindles
