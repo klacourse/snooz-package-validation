@@ -2,6 +2,51 @@ import numpy as np
 from scipy.signal import butter, resample_poly, sosfiltfilt
 
 
+def butter_bandpass_filter_nan(data, lowcut, highcut, sample_rate, order):
+    """
+    Bandpass filter the data using Butterworth IIR filters, handling NaNs via interpolation.
+
+    Parameters
+    ----------
+    data : ndarray
+        The data to be filtered; format (n_samples,)
+    lowcut : float
+        The lower critical frequency
+    highcut : float
+        The higher critical frequency
+    sample_rate : float
+        The sampling rate of the given data
+    order : int
+        The order of the used filters
+
+    Returns
+    -------
+    data : ndarray
+        The bandpass filtered data; format (n_samples,)
+    """
+
+    # Identify NaN indices
+    nan_mask = np.isnan(data)
+
+    # Interpolate NaNs before filtering
+    if np.any(nan_mask):
+        data = np.copy(data)
+        data[nan_mask] = np.interp(
+            np.flatnonzero(nan_mask), np.flatnonzero(~nan_mask), data[~nan_mask]
+        )
+
+    sos_high = butter(order, lowcut, btype='hp', fs=sample_rate, output='sos')
+    sos_low = butter(order, highcut, btype='lp', fs=sample_rate, output='sos')
+
+    filtered_data = sosfiltfilt(sos_low, sosfiltfilt(sos_high, data, padlen=3 * order), padlen=3 * order)
+
+    # Restore original NaN values
+    filtered_data[nan_mask] = np.nan
+
+    return filtered_data
+
+
+
 def butter_bandpass_filter(data, lowcut, highcut, sample_rate, order):
     """
     Bandpass filter the data using Butterworth IIR filters.
