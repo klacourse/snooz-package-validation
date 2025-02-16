@@ -143,13 +143,10 @@ class SumoExampleV1(SciNode):
             artifact_events: Pandas DataFrame (columns=['group','name','start_sec','duration_sec','channels']) 
                 Selected events list for artifacts.
 
-            
-
         Returns
         -------
             events: Pandas DataFrame (columns=['group','name','start_sec','duration_sec','channels']) 
                 Events list for spindle detections.
-            
 
         Raises
         ------
