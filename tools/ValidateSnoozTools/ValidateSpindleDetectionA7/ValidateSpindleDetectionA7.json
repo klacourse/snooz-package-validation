@@ -76,22 +76,125 @@
     "dependencies": [
         {
             "package_name": "ValidateSnoozTools",
-            "package_version": "0.0.0",
+            "package_version": "0.1.0",
             "deleteable": false
         },
         {
             "package_name": "CEAMSTools",
-            "package_version": "6.10.0",
+            "package_version": "6.12.0",
             "deleteable": false
         },
         {
             "package_name": "CEAMSModules",
-            "package_version": "6.10.0"
+            "package_version": "6.12.0"
         }
     ],
     "process_params": {
         "subgraph_params": {},
         "nodes": [
+            {
+                "cls": "AliasSignals",
+                "name": "AliasSignals",
+                "metadata": {},
+                "file_location": "",
+                "module_label": "Alias Signals",
+                "module_category": "Parameters",
+                "module_options": {},
+                "inputs": {
+                    "signals": {
+                        "name": "signals",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {
+                            "8432eae4-a901-4dcb-93f5-cae392a3e643": "constant"
+                        }
+                    },
+                    "alias": {
+                        "name": "alias",
+                        "value": "REF",
+                        "sub_plugs": {},
+                        "connections": {}
+                    }
+                },
+                "outputs": {
+                    "signals": {
+                        "name": "signals",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {}
+                    },
+                    "channels_name": {
+                        "name": "channels_name",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {
+                            "9b24734f-ede3-4312-80f2-8deb2ec6603c": [
+                                "channel_to_sub"
+                            ]
+                        }
+                    }
+                },
+                "module": "CEAMSModules.AliasSignals",
+                "identifier": "cd032b88-ea36-48ac-98a8-e24c4d254550",
+                "activation_state": "activated",
+                "package": {
+                    "package_name": "CEAMSModules"
+                },
+                "pos_x": -1524.0,
+                "pos_y": -313.0
+            },
+            {
+                "cls": "AliasSignals",
+                "name": "AliasSignals",
+                "metadata": {},
+                "file_location": "",
+                "module_label": "Alias Signals",
+                "module_category": "Parameters",
+                "module_options": {},
+                "inputs": {
+                    "signals": {
+                        "name": "signals",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {
+                            "8432eae4-a901-4dcb-93f5-cae392a3e643": "constant"
+                        }
+                    },
+                    "alias": {
+                        "name": "alias",
+                        "value": "EEG",
+                        "sub_plugs": {},
+                        "connections": {}
+                    }
+                },
+                "outputs": {
+                    "signals": {
+                        "name": "signals",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {}
+                    },
+                    "channels_name": {
+                        "name": "channels_name",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {
+                            "9b24734f-ede3-4312-80f2-8deb2ec6603c": [
+                                "channel",
+                                "new_channel_name"
+                            ]
+                        }
+                    }
+                },
+                "module": "CEAMSModules.AliasSignals",
+                "identifier": "1ae9e603-b7e4-4f20-83e6-610d0cbdded1",
+                "activation_state": "activated",
+                "package": {
+                    "package_name": "CEAMSModules"
+                },
+                "pos_x": -1448.0,
+                "pos_y": -424.0
+            },
             {
                 "cls": "EventCombine",
                 "name": "EventCombine",
@@ -493,7 +596,7 @@
                 "module_category": "",
                 "module_options": {
                     "alias": {
-                        "value": "",
+                        "value": "EEG;REF",
                         "tooltip": "List of aliases separated by a semicolon(;) character"
                     },
                     "file_selection_only": {
@@ -510,7 +613,14 @@
                     },
                     "alias": {
                         "name": "alias",
-                        "value": {},
+                        "value": {
+                            "EEG": [
+                                ""
+                            ],
+                            "REF": [
+                                ""
+                            ]
+                        },
                         "sub_plugs": {},
                         "connections": {}
                     }
@@ -534,11 +644,11 @@
                         "value": "",
                         "sub_plugs": {},
                         "connections": {
-                            "141974a3-d09b-4e05-9f85-a8a908d80449": [
-                                "signals"
-                            ],
-                            "eb79e413-8e63-49f1-8eb4-48cdca1989bd": [
+                            "8432eae4-a901-4dcb-93f5-cae392a3e643": [
                                 "constant"
+                            ],
+                            "9b24734f-ede3-4312-80f2-8deb2ec6603c": [
+                                "signals"
                             ]
                         }
                     },
@@ -857,7 +967,7 @@
                     },
                     "min_len_sec": {
                         "name": "min_len_sec",
-                        "value": "0.5",
+                        "value": "0.3",
                         "sub_plugs": {},
                         "connections": {}
                     },
@@ -1018,7 +1128,7 @@
                         "value": "",
                         "sub_plugs": {},
                         "connections": {
-                            "afec6a23-8c85-4c7d-8b29-d04fea5a6887": "signals"
+                            "9b24734f-ede3-4312-80f2-8deb2ec6603c": "new_signals"
                         }
                     },
                     "events": {
@@ -1942,7 +2052,7 @@
                         "value": "",
                         "sub_plugs": {},
                         "connections": {
-                            "afec6a23-8c85-4c7d-8b29-d04fea5a6887": "signals"
+                            "8432eae4-a901-4dcb-93f5-cae392a3e643": "constant"
                         }
                     }
                 },
@@ -2515,7 +2625,7 @@
                     },
                     "spindle_gen_param": {
                         "name": "spindle_gen_param",
-                        "value": "{'min_duration': 0.5, 'max_duration': 2.5, 'sleep_stage_sel': ['2'], 'in_cycle': 0, 'exclude_nremp': 0, 'exclude_remp': 0}",
+                        "value": "{'min_duration': 0.3, 'max_duration': 2.5, 'sleep_stage_sel': ['2'], 'in_cycle': 0, 'exclude_nremp': 0, 'exclude_remp': 0}",
                         "sub_plugs": {},
                         "connections": {}
                     },
@@ -2630,7 +2740,7 @@
                     },
                     "spindle_gen_param": {
                         "name": "spindle_gen_param",
-                        "value": "{'min_duration': 0.5, 'max_duration': 2.5, 'sleep_stage_sel': ['2'], 'in_cycle': 0, 'exclude_nremp': 0, 'exclude_remp': 0}",
+                        "value": "{'min_duration': 0.3, 'max_duration': 2.5, 'sleep_stage_sel': ['2'], 'in_cycle': 0, 'exclude_nremp': 0, 'exclude_remp': 0}",
                         "sub_plugs": {},
                         "connections": {}
                     },
@@ -3615,6 +3725,114 @@
                 },
                 "pos_x": 1622.0,
                 "pos_y": -259.9999999999999
+            },
+            {
+                "cls": "SubstractSignals",
+                "name": "SubstractSignals",
+                "metadata": {},
+                "file_location": "",
+                "module_label": "Substract Signals",
+                "module_category": "Signal Processing",
+                "module_options": {},
+                "inputs": {
+                    "signals": {
+                        "name": "signals",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {
+                            "afec6a23-8c85-4c7d-8b29-d04fea5a6887": "signals"
+                        }
+                    },
+                    "channel": {
+                        "name": "channel",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {
+                            "1ae9e603-b7e4-4f20-83e6-610d0cbdded1": "channels_name"
+                        }
+                    },
+                    "channel_to_sub": {
+                        "name": "channel_to_sub",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {
+                            "cd032b88-ea36-48ac-98a8-e24c4d254550": "channels_name"
+                        }
+                    },
+                    "new_channel_name": {
+                        "name": "new_channel_name",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {
+                            "1ae9e603-b7e4-4f20-83e6-610d0cbdded1": "channels_name"
+                        }
+                    }
+                },
+                "outputs": {
+                    "new_signals": {
+                        "name": "new_signals",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {
+                            "141974a3-d09b-4e05-9f85-a8a908d80449": [
+                                "signals"
+                            ]
+                        }
+                    }
+                },
+                "module": "CEAMSModules.SubstractSignals",
+                "identifier": "9b24734f-ede3-4312-80f2-8deb2ec6603c",
+                "activation_state": "activated",
+                "package": {
+                    "package_name": "CEAMSModules"
+                },
+                "pos_x": -1226.0,
+                "pos_y": -239.0
+            },
+            {
+                "cls": "Constant",
+                "name": "Constant",
+                "metadata": {},
+                "file_location": "",
+                "module_label": "Constant",
+                "module_category": "Parameters",
+                "module_options": {},
+                "inputs": {
+                    "constant": {
+                        "name": "constant",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {
+                            "afec6a23-8c85-4c7d-8b29-d04fea5a6887": "signals"
+                        }
+                    }
+                },
+                "outputs": {
+                    "constant": {
+                        "name": "constant",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {
+                            "eb79e413-8e63-49f1-8eb4-48cdca1989bd": [
+                                "constant"
+                            ],
+                            "1ae9e603-b7e4-4f20-83e6-610d0cbdded1": [
+                                "signals"
+                            ],
+                            "cd032b88-ea36-48ac-98a8-e24c4d254550": [
+                                "signals"
+                            ]
+                        }
+                    }
+                },
+                "module": "CEAMSModules.Constant",
+                "identifier": "8432eae4-a901-4dcb-93f5-cae392a3e643",
+                "activation_state": "activated",
+                "package": {
+                    "package_name": "CEAMSModules"
+                },
+                "pos_x": -1702.0,
+                "pos_y": -437.0
             }
         ]
     }
