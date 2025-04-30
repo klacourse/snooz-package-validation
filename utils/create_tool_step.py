@@ -64,13 +64,14 @@ while not done:
             f.close()
 
         def compile_ui_to_py(compiler, ui_file, py_file):
-            result = subprocess.run(
-                f"{compiler} {os.path.join(root_path, ui_file)} -o {os.path.join(root_path, py_file)}",
-                check=True,
-            )
+            ui_path = os.path.join(root_path, ui_file)
+            py_path = os.path.join(root_path, py_file)
+            command = f'"{compiler}" "{ui_path}" -o "{py_path}"'
 
+            result = subprocess.run(command, shell=True)
+        
             if result.returncode != 0:
-                print(f"Error Compiling {ui_file}: {result.stderr.decode('utf-8')}")
+                print(f"Error Compiling {ui_file}: returncode {result.returncode}")
 
         # Create all files
         create_file("step_template.txt", f"{step_class}.py")
@@ -114,6 +115,9 @@ while not done:
                     "module_id":module_id
                 }
             )
+
+        # Compile the ui file to python
+        compiler_exists = True
 
         with open(tool_description_path, 'w', encoding="UTF-8") as outfile:
             json_string = json.dumps(tool_description, indent=4)
