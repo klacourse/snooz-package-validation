@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file ''
+## Form generated from reading UI file 'Ui_SpindleDetectorSelStep.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.8.2
 ##
@@ -15,9 +15,9 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QCheckBox, QHBoxLayout, QLabel,
-    QLayout, QLineEdit, QRadioButton, QSizePolicy,
-    QSpacerItem, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QApplication, QHBoxLayout, QLabel, QLayout,
+    QLineEdit, QRadioButton, QSizePolicy, QSpacerItem,
+    QVBoxLayout, QWidget)
 import themes_rc
 
 class Ui_SpindleDetectorSelStep(object):
@@ -94,7 +94,7 @@ class Ui_SpindleDetectorSelStep(object):
 
         self.verticalLayout = QVBoxLayout()
         self.verticalLayout.setObjectName(u"verticalLayout")
-        self.verticalLayout.setSizeConstraint(QLayout.SetDefaultConstraint)
+        self.verticalLayout.setSizeConstraint(QLayout.SizeConstraint.SetDefaultConstraint)
         self.verticalLayout.setContentsMargins(-1, 0, -1, 0)
         self.horizontalLayout_7 = QHBoxLayout()
         self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
@@ -154,88 +154,18 @@ class Ui_SpindleDetectorSelStep(object):
 
         self.verticalLayout_3.addLayout(self.verticalLayout)
 
-        self.verticalSpacer_2 = QSpacerItem(20, 35, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
-
-        self.verticalLayout_3.addItem(self.verticalSpacer_2)
-
         self.verticalLayout_2 = QVBoxLayout()
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
-        self.label_6 = QLabel(SpindleDetectorSelStep)
-        self.label_6.setObjectName(u"label_6")
-        self.label_6.setFont(font)
-
-        self.verticalLayout_2.addWidget(self.label_6)
-
-        self.label_2 = QLabel(SpindleDetectorSelStep)
-        self.label_2.setObjectName(u"label_2")
-
-        self.verticalLayout_2.addWidget(self.label_2)
-
         self.horizontalLayout_2 = QHBoxLayout()
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-        self.checkBox_n1 = QCheckBox(SpindleDetectorSelStep)
-        self.checkBox_n1.setObjectName(u"checkBox_n1")
-
-        self.horizontalLayout_2.addWidget(self.checkBox_n1)
-
-        self.checkBox_n2 = QCheckBox(SpindleDetectorSelStep)
-        self.checkBox_n2.setObjectName(u"checkBox_n2")
-        self.checkBox_n2.setChecked(True)
-
-        self.horizontalLayout_2.addWidget(self.checkBox_n2)
-
-        self.checkBox_n3 = QCheckBox(SpindleDetectorSelStep)
-        self.checkBox_n3.setObjectName(u"checkBox_n3")
-        self.checkBox_n3.setChecked(False)
-
-        self.horizontalLayout_2.addWidget(self.checkBox_n3)
-
-        self.checkBox_r = QCheckBox(SpindleDetectorSelStep)
-        self.checkBox_r.setObjectName(u"checkBox_r")
-
-        self.horizontalLayout_2.addWidget(self.checkBox_r)
-
 
         self.verticalLayout_2.addLayout(self.horizontalLayout_2)
 
 
         self.verticalLayout_3.addLayout(self.verticalLayout_2)
 
-        self.verticalSpacer = QSpacerItem(20, 35, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
-
-        self.verticalLayout_3.addItem(self.verticalSpacer)
-
-        self.label_7 = QLabel(SpindleDetectorSelStep)
-        self.label_7.setObjectName(u"label_7")
-        self.label_7.setFont(font)
-
-        self.verticalLayout_3.addWidget(self.label_7)
-
-        self.label_9 = QLabel(SpindleDetectorSelStep)
-        self.label_9.setObjectName(u"label_9")
-
-        self.verticalLayout_3.addWidget(self.label_9)
-
         self.horizontalLayout_3 = QHBoxLayout()
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
-        self.checkBox_excl_nremp = QCheckBox(SpindleDetectorSelStep)
-        self.checkBox_excl_nremp.setObjectName(u"checkBox_excl_nremp")
-        self.checkBox_excl_nremp.setEnabled(False)
-
-        self.horizontalLayout_3.addWidget(self.checkBox_excl_nremp)
-
-        self.checkBox_excl_remp = QCheckBox(SpindleDetectorSelStep)
-        self.checkBox_excl_remp.setObjectName(u"checkBox_excl_remp")
-        self.checkBox_excl_remp.setChecked(True)
-
-        self.horizontalLayout_3.addWidget(self.checkBox_excl_remp)
-
-        self.checkBox_only_cycles = QCheckBox(SpindleDetectorSelStep)
-        self.checkBox_only_cycles.setObjectName(u"checkBox_only_cycles")
-        self.checkBox_only_cycles.setChecked(True)
-
-        self.horizontalLayout_3.addWidget(self.checkBox_only_cycles)
-
 
         self.verticalLayout_3.addLayout(self.horizontalLayout_3)
 
@@ -278,9 +208,8 @@ class Ui_SpindleDetectorSelStep(object):
 
 
         self.retranslateUi(SpindleDetectorSelStep)
-        self.checkBox_only_cycles.stateChanged.connect(SpindleDetectorSelStep.detect_in_cycle_only_slot)
-        self.radioButto_analyse_spindle.clicked.connect(SpindleDetectorSelStep.radio_button_slot)
         self.radioButton_detect_spindle.clicked.connect(SpindleDetectorSelStep.radio_button_slot)
+        self.radioButto_analyse_spindle.clicked.connect(SpindleDetectorSelStep.radio_button_slot)
 
         QMetaObject.connectSlotsByName(SpindleDetectorSelStep)
     # setupUi
@@ -299,17 +228,6 @@ class Ui_SpindleDetectorSelStep(object):
         self.min_length_lineEdit.setText(QCoreApplication.translate("SpindleDetectorSelStep", u"0.3", None))
         self.label_4.setText(QCoreApplication.translate("SpindleDetectorSelStep", u"max", None))
         self.max_length_lineEdit.setText(QCoreApplication.translate("SpindleDetectorSelStep", u"2.5", None))
-        self.label_6.setText(QCoreApplication.translate("SpindleDetectorSelStep", u"<html><head/><body><p><span style=\" font-weight:600;\">Sleep stage filtering</span></p></body></html>", None))
-        self.label_2.setText(QCoreApplication.translate("SpindleDetectorSelStep", u"Select the stages for which there will be spindle detection", None))
-        self.checkBox_n1.setText(QCoreApplication.translate("SpindleDetectorSelStep", u"N1", None))
-        self.checkBox_n2.setText(QCoreApplication.translate("SpindleDetectorSelStep", u"N2", None))
-        self.checkBox_n3.setText(QCoreApplication.translate("SpindleDetectorSelStep", u"N3", None))
-        self.checkBox_r.setText(QCoreApplication.translate("SpindleDetectorSelStep", u"R", None))
-        self.label_7.setText(QCoreApplication.translate("SpindleDetectorSelStep", u"<html><head/><body><p><span style=\" font-weight:600;\">Sleep cycle filtering</span></p></body></html>", None))
-        self.label_9.setText(QCoreApplication.translate("SpindleDetectorSelStep", u"Define for which sleep cycles (or periods) there will be spindle detection", None))
-        self.checkBox_excl_nremp.setText(QCoreApplication.translate("SpindleDetectorSelStep", u"Exclude NREM Periods", None))
-        self.checkBox_excl_remp.setText(QCoreApplication.translate("SpindleDetectorSelStep", u"Exclude REM Periods", None))
-        self.checkBox_only_cycles.setText(QCoreApplication.translate("SpindleDetectorSelStep", u"Detection in sleep cycles only", None))
         self.label_10.setText(QCoreApplication.translate("SpindleDetectorSelStep", u"<html><head/><body><p><span style=\" font-weight:600;\">Detections and/or analyses</span></p></body></html>", None))
         self.radioButton_detect_spindle.setText(QCoreApplication.translate("SpindleDetectorSelStep", u"Detect spindles", None))
         self.radioButto_analyse_spindle.setText(QCoreApplication.translate("SpindleDetectorSelStep", u"Do not detect spindles, just analyze spindles previously detected and saved in the accessory file.", None))

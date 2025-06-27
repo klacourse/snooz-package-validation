@@ -141,31 +141,11 @@ class SpindleDetectorSelStep( BaseStepView,  Ui_SpindleDetectorSelStep, QtWidget
     # Called when the user clic on RUN
     # Message are sent to the publisher   
     def on_apply_settings(self):
-        stages_str = ''
-        if self.checkBox_n1.isChecked():
-            if len(stages_str)==0:
-                stages_str = '1'
-            else:
-                stages_str = stages_str+',1'
-        if self.checkBox_n2.isChecked():
-            if len(stages_str)==0:
-                stages_str = '2'
-            else:
-                stages_str = stages_str+',2'
-        if self.checkBox_n3.isChecked():
-            if len(stages_str)==0:
-                stages_str = '3'
-            else:
-                stages_str = stages_str+',3'   
-        if self.checkBox_r.isChecked():
-            if len(stages_str)==0:
-                stages_str = '5'
-            else:
-                stages_str = stages_str+',5'                
-        self._pub_sub_manager.publish(self, self._stages_topic, str(stages_str))
-        self._pub_sub_manager.publish(self, self._exclude_nremp_topic, str(int(self.checkBox_excl_nremp.isChecked())))
-        self._pub_sub_manager.publish(self, self._exclude_remp_topic, str(int(self.checkBox_excl_remp.isChecked())))
-        self._pub_sub_manager.publish(self, self._in_cycle_topic, str(int(self.checkBox_only_cycles.isChecked())))
+        # stages_str = '2'  # Always use stage 2 (N2) as default            
+        # self._pub_sub_manager.publish(self, self._stages_topic, str(stages_str))
+        # self._pub_sub_manager.publish(self, self._exclude_nremp_topic, str(int(self.checkBox_excl_nremp.isChecked())))
+        # self._pub_sub_manager.publish(self, self._exclude_remp_topic, str(int(self.checkBox_excl_remp.isChecked())))
+        # self._pub_sub_manager.publish(self, self._in_cycle_topic, str(int(self.checkBox_only_cycles.isChecked())))
         self._pub_sub_manager.publish(self, self._min_len_topic, self.min_length_lineEdit.text())
         self._pub_sub_manager.publish(self, self._max_len_topic, self.max_length_lineEdit.text())
 
@@ -210,10 +190,10 @@ class SpindleDetectorSelStep( BaseStepView,  Ui_SpindleDetectorSelStep, QtWidget
         # Init the _spindle_param_gen_topic and send the dict
         self._spindle_det_param['min_duration'] = float(self.min_length_lineEdit.text())
         self._spindle_det_param['max_duration'] = float(self.max_length_lineEdit.text())
-        self._spindle_det_param['sleep_stage_sel'] = stages_str.split(',')
-        self._spindle_det_param['in_cycle'] = int(self.checkBox_only_cycles.isChecked())
-        self._spindle_det_param['exclude_nremp'] = int(self.checkBox_excl_nremp.isChecked())
-        self._spindle_det_param['exclude_remp'] = int(self.checkBox_excl_remp.isChecked())
+        # self._spindle_det_param['sleep_stage_sel'] = stages_str.split(',')
+        # self._spindle_det_param['in_cycle'] = int(self.checkBox_only_cycles.isChecked())
+        # self._spindle_det_param['exclude_nremp'] = int(self.checkBox_excl_nremp.isChecked())
+        # self._spindle_det_param['exclude_remp'] = int(self.checkBox_excl_remp.isChecked())
         self._pub_sub_manager.publish(self, self._spindle_param_gen_det_topic, str(self._spindle_det_param))
         self._pub_sub_manager.publish(self, self._spindle_param_gen_anal_topic, str(self._spindle_det_param))
 
@@ -227,18 +207,18 @@ class SpindleDetectorSelStep( BaseStepView,  Ui_SpindleDetectorSelStep, QtWidget
         if topic == self._name_topic:
             self.name_lineEdit.setText(message)     
              
-        if topic == self._stages_topic:
-            stages_lst = message.split(',')
-            self.checkBox_n1.setChecked('1' in stages_lst)
-            self.checkBox_n2.setChecked('2' in stages_lst)
-            self.checkBox_n3.setChecked('3' in stages_lst)
-            self.checkBox_r.setChecked('5' in stages_lst)
-        if topic == self._exclude_nremp_topic:
-            self.checkBox_excl_nremp.setChecked(int(message))
-        if topic == self._exclude_remp_topic:
-            self.checkBox_excl_remp.setChecked(int(message))
-        if topic == self._in_cycle_topic:
-            self.checkBox_only_cycles.setChecked(int(message))
+        # if topic == self._stages_topic:
+        #     stages_lst = message.split(',')
+        #     self.checkBox_n1.setChecked('1' in stages_lst)
+        #     self.checkBox_n2.setChecked('2' in stages_lst)
+        #     self.checkBox_n3.setChecked('3' in stages_lst)
+        #     self.checkBox_r.setChecked('5' in stages_lst)
+        # if topic == self._exclude_nremp_topic:
+        #     self.checkBox_excl_nremp.setChecked(int(message))
+        # if topic == self._exclude_remp_topic:
+        #     self.checkBox_excl_remp.setChecked(int(message))
+        # if topic == self._in_cycle_topic:
+        #     self.checkBox_only_cycles.setChecked(int(message))
         if topic == self._min_len_topic:
             self.min_length_lineEdit.setText(message)
         if topic == self._max_len_topic:
@@ -265,19 +245,19 @@ class SpindleDetectorSelStep( BaseStepView,  Ui_SpindleDetectorSelStep, QtWidget
     # Called when a value listened is changed
     # No body asked for the value (no ping), but the value changed and
     # some subscribed to the topic
-    def on_topic_update(self, topic, message, sender):
-        if topic==self._context_manager.topic:
-            # If the context_per_cycle is checked from MartinSettings 
-            #   -> check the computation of the thresh per cycle (the opposite is not true)            
-            if message==ContextConstants.context_per_cycle: # key of the context dict
-                # Need to select only in cycle to compute threshold per cycle (the opposite is not true)
-                if self._context_manager[ContextConstants.context_per_cycle]==True: 
-                    self.checkBox_only_cycles.setChecked(True)
+    # def on_topic_update(self, topic, message, sender):
+    #     if topic==self._context_manager.topic:
+    #         # If the context_per_cycle is checked from MartinSettings 
+    #         #   -> check the computation of the thresh per cycle (the opposite is not true)            
+    #         if message==ContextConstants.context_per_cycle: # key of the context dict
+    #             # Need to select only in cycle to compute threshold per cycle (the opposite is not true)
+    #             if self._context_manager[ContextConstants.context_per_cycle]==True: 
+    #                 self.checkBox_only_cycles.setChecked(True)
 
 
     # Called when user check/uncheck detection in_cycle_only checkbox
-    def detect_in_cycle_only_slot(self):
-        self._context_manager[ContextConstants.context_in_cycle] = self.checkBox_only_cycles.isChecked()
+    # def detect_in_cycle_only_slot(self):
+    #     self._context_manager[ContextConstants.context_in_cycle] = self.checkBox_only_cycles.isChecked()
 
 
     # Called when user check/uncheck the radio button to detect or analyze spindle
@@ -292,10 +272,10 @@ class SpindleDetectorSelStep( BaseStepView,  Ui_SpindleDetectorSelStep, QtWidget
     # Called when the user delete an instance of the plugin
     def __del__(self):
         if self._pub_sub_manager is not None:
-            self._pub_sub_manager.unsubscribe(self, self._stages_topic)
-            self._pub_sub_manager.unsubscribe(self, self._exclude_nremp_topic)
-            self._pub_sub_manager.unsubscribe(self, self._exclude_remp_topic)
-            self._pub_sub_manager.unsubscribe(self, self._in_cycle_topic)
+            # self._pub_sub_manager.unsubscribe(self, self._stages_topic)
+            # self._pub_sub_manager.unsubscribe(self, self._exclude_nremp_topic)
+            # self._pub_sub_manager.unsubscribe(self, self._exclude_remp_topic)
+            # self._pub_sub_manager.unsubscribe(self, self._in_cycle_topic)
             self._pub_sub_manager.unsubscribe(self, self._min_len_topic)
             self._pub_sub_manager.unsubscribe(self, self._max_len_topic)
             self._pub_sub_manager.unsubscribe(self, self._spindle_param_gen_det_topic)
