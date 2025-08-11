@@ -47,6 +47,20 @@
                     }
                 }
             ]
+        },
+        {
+            "item_name": "ValidateImplementedA7",
+            "item_type": "tool",
+            "item_version": "0.0.0",
+            "item_hooks": [
+                {
+                    "endpoint_name": "menu_endpoint",
+                    "parameters": {
+                        "menu_category": "Validate",
+                        "menu_label": "Validate Implemented A7"
+                    }
+                }
+            ]
         }
     ]
 }

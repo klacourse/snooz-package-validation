@@ -1,12 +1,12 @@
 {
-    "item_name": "ValidateSpindleDetectionA7",
+    "item_name": "ValidateImplementedA7",
     "item_type": "tool",
     "item_api_version": "2.0.0",
     "item_url": "",
     "item_author": "",
     "item_description": "",
     "tool_params": {
-        "tool_label": "Validate A7",
+        "tool_label": "Validate Implemented A7",
         "tool_category": "Validate",
         "asset_directory": "",
         "package_name": "ValidateSnoozTools",
@@ -92,87 +92,6 @@
     "process_params": {
         "subgraph_params": {},
         "nodes": [
-            {
-                "cls": "DiscardEvents",
-                "name": "DiscardEvents",
-                "metadata": {},
-                "file_location": "",
-                "module_label": "Discard Events",
-                "module_category": "Events Utilities",
-                "module_options": {},
-                "inputs": {
-                    "events": {
-                        "name": "events",
-                        "value": "",
-                        "sub_plugs": {},
-                        "connections": {
-                            "e23b154f-dd5d-4765-97a9-531bf562d864": "events_selected"
-                        }
-                    },
-                    "event_group": {
-                        "name": "event_group",
-                        "value": "",
-                        "sub_plugs": {},
-                        "connections": {}
-                    },
-                    "event_name": {
-                        "name": "event_name",
-                        "value": "",
-                        "sub_plugs": {},
-                        "connections": {}
-                    },
-                    "min_len_sec": {
-                        "name": "min_len_sec",
-                        "value": "0.5",
-                        "sub_plugs": {},
-                        "connections": {}
-                    },
-                    "max_len_sec": {
-                        "name": "max_len_sec",
-                        "value": "2.5",
-                        "sub_plugs": {},
-                        "connections": {}
-                    },
-                    "artefact_free": {
-                        "name": "artefact_free",
-                        "value": "0",
-                        "sub_plugs": {},
-                        "connections": {}
-                    },
-                    "artefact_group": {
-                        "name": "artefact_group",
-                        "value": "",
-                        "sub_plugs": {},
-                        "connections": {}
-                    },
-                    "artefact_name": {
-                        "name": "artefact_name",
-                        "value": "",
-                        "sub_plugs": {},
-                        "connections": {}
-                    }
-                },
-                "outputs": {
-                    "events": {
-                        "name": "events",
-                        "value": "",
-                        "sub_plugs": {},
-                        "connections": {
-                            "d2e83c65-f0fa-4385-a112-93d149e4900e": [
-                                "events1"
-                            ]
-                        }
-                    }
-                },
-                "module": "CEAMSModules.DiscardEvents",
-                "identifier": "d8f2e745-551a-423c-87da-443f14daa930",
-                "activation_state": "activated",
-                "package": {
-                    "package_name": "CEAMSModules"
-                },
-                "pos_x": 1058.0,
-                "pos_y": 364.0
-            },
             {
                 "cls": "StringManip",
                 "name": "StringManip",
@@ -351,7 +270,7 @@
                         "value": "",
                         "sub_plugs": {},
                         "connections": {
-                            "d8f2e745-551a-423c-87da-443f14daa930": "events"
+                            "e23b154f-dd5d-4765-97a9-531bf562d864": "events_selected"
                         }
                     },
                     "event1_name": {
@@ -478,8 +397,8 @@
                         "value": "",
                         "sub_plugs": {},
                         "connections": {
-                            "d8f2e745-551a-423c-87da-443f14daa930": [
-                                "events"
+                            "d2e83c65-f0fa-4385-a112-93d149e4900e": [
+                                "events1"
                             ]
                         }
                     },
@@ -496,8 +415,8 @@
                 "package": {
                     "package_name": "CEAMSModules"
                 },
-                "pos_x": 655.2499999999998,
-                "pos_y": 425.7499999999998
+                "pos_x": 1056.2499999999998,
+                "pos_y": 438.74999999999983
             },
             {
                 "cls": "FilterEvents",
@@ -1178,7 +1097,7 @@
                     },
                     "spindle_gen_param": {
                         "name": "spindle_gen_param",
-                        "value": "{'min_duration': 0.5, 'max_duration': 2.5, 'sleep_stage_sel': ['2'], 'in_cycle': 0, 'exclude_nremp': 0, 'exclude_remp': 0}",
+                        "value": "{'min_duration': 0.3, 'max_duration': 2.5, 'sleep_stage_sel': ['2'], 'in_cycle': 0, 'exclude_nremp': 0, 'exclude_remp': 0}",
                         "sub_plugs": {},
                         "connections": {}
                     },
@@ -1293,7 +1212,7 @@
                     },
                     "spindle_gen_param": {
                         "name": "spindle_gen_param",
-                        "value": "{'min_duration': 0.5, 'max_duration': 2.5, 'sleep_stage_sel': ['2'], 'in_cycle': 0, 'exclude_nremp': 0, 'exclude_remp': 0}",
+                        "value": "{'min_duration': 0.3, 'max_duration': 2.5, 'sleep_stage_sel': ['2'], 'in_cycle': 0, 'exclude_nremp': 0, 'exclude_remp': 0}",
                         "sub_plugs": {},
                         "connections": {}
                     },
@@ -2907,7 +2826,7 @@
                     },
                     "min_len_sec": {
                         "name": "min_len_sec",
-                        "value": "0.5",
+                        "value": "0.3",
                         "sub_plugs": {},
                         "connections": {}
                     },
