@@ -9,8 +9,8 @@ See the file LICENCE for full license details.
 """
 from commons.BaseStepView import BaseStepView
 from flowpipe.ActivationState import ActivationState
-from ValidateSnoozTools.ValidateSpindleDetectionA7.Commons import ContextConstants
-from ValidateSnoozTools.ValidateSpindleDetectionA7.SpindleDetectorSelStep.Ui_SpindleDetectorSelStep import Ui_SpindleDetectorSelStep
+from ValidateSnoozTools.A7PracticalDesign.Commons import ContextConstants
+from ValidateSnoozTools.A7PracticalDesign.SpindleDetectorSelStep.Ui_SpindleDetectorSelStep import Ui_SpindleDetectorSelStep
 
 
 from qtpy import QtWidgets

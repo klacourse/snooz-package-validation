@@ -1,9 +1,9 @@
 {
-    "item_name": "ValidateImplementedSUMO",
+    "item_name": "SUMOPracticalDesign",
     "item_type": "tool",
     "item_api_version": "2.0.0",
     "tool_params": {
-        "tool_label": "Spindle Detection SUMO",
+        "tool_label": "SUMO Practical Design",
         "tool_category": "2-Processing",
         "tool_author": "",
         "tool_url": "",
@@ -11,7 +11,7 @@
         "package_name": "ValidateSnoozTools",
         "steps": [
             {
-                "name": "SUMO Detector",
+                "name": "SUMO Practical Design",
                 "description": "",
                 "custom_step_name": "SpindleDetectionDoc",
                 "show_index": false,

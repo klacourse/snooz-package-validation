@@ -9,7 +9,7 @@ See the file LICENCE for full license details.
 
 from qtpy import QtWidgets
 
-from ValidateSnoozTools.ValidateImplementedA7.SpindleDetectionDoc.Ui_SpindleDetectionDoc import Ui_SpindleDetectionDoc
+from ValidateSnoozTools.A7MODAReplication.SpindleDetectionDoc.Ui_SpindleDetectionDoc import Ui_SpindleDetectionDoc
 from commons.BaseStepView import BaseStepView
 
 class SpindleDetectionDoc( BaseStepView,  Ui_SpindleDetectionDoc, QtWidgets.QWidget):

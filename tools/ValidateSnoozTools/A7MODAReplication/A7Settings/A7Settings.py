@@ -12,7 +12,7 @@ from qtpy.QtGui import QRegularExpressionValidator
 
 from commons.BaseStepView import BaseStepView
 from flowpipe.ActivationState import ActivationState
-from ValidateSnoozTools.ValidateImplementedA7.A7Settings.Ui_A7Settings import Ui_A7Settings
+from ValidateSnoozTools.A7MODAReplication.A7Settings.Ui_A7Settings import Ui_A7Settings
 
 
 class A7Settings( BaseStepView,  Ui_A7Settings, QtWidgets.QWidget):

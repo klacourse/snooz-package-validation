@@ -7,7 +7,7 @@
     "package_description": "Tools to assist in validating the Snooz Toolbox.",
     "items": [
         {
-            "item_name": "ValidateSpindleDetectionA7",
+            "item_name": "A7PracticalDesign",
             "item_type": "tool",
             "item_version": "2.0.0",
             "item_hooks": [
@@ -15,13 +15,13 @@
                     "endpoint_name": "menu_endpoint",
                     "parameters": {
                         "menu_category": "Validate",
-                        "menu_label": "Validate Spindle Detection A7"
+                        "menu_label": "A7 Practical Design"
                     }
                 }
             ]
         },
         {
-            "item_name": "ValidateSpindleDetectionSUMO",
+            "item_name": "SUMOPracticalDesign",
             "item_type": "tool",
             "item_version": "0.0.0",
             "item_hooks": [
@@ -29,13 +29,13 @@
                     "endpoint_name": "menu_endpoint",
                     "parameters": {
                         "menu_category": "Validate",
-                        "menu_label": "Validate Spindle Detection SUMO"
+                        "menu_label": "SUMO Practical Design"
                     }
                 }
             ]
         },
         {
-            "item_name": "ValidateImplementedSUMO",
+            "item_name": "A7MODAReplication",
             "item_type": "tool",
             "item_version": "0.0.0",
             "item_hooks": [
@@ -43,13 +43,13 @@
                     "endpoint_name": "menu_endpoint",
                     "parameters": {
                         "menu_category": "Validate",
-                        "menu_label": "Validate Implemented SUMO"
+                        "menu_label": "A7-MODA Replication"
                     }
                 }
             ]
         },
         {
-            "item_name": "ValidateImplementedA7",
+            "item_name": "SUMOMODAReplication",
             "item_type": "tool",
             "item_version": "0.0.0",
             "item_hooks": [
@@ -57,7 +57,7 @@
                     "endpoint_name": "menu_endpoint",
                     "parameters": {
                         "menu_category": "Validate",
-                        "menu_label": "Validate Implemented A7"
+                        "menu_label": "SUMO-MODA Replication"
                     }
                 }
             ]

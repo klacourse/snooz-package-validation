@@ -9,7 +9,7 @@ See the file LICENCE for full license details.
 
 from qtpy import QtWidgets
 
-from ValidateSnoozTools.ValidateImplementedA7.HoursCyclesStep.Ui_HoursCyclesStep import Ui_HoursCyclesStep
+from ValidateSnoozTools.A7PracticalDesign.HoursCyclesStep.Ui_HoursCyclesStep import Ui_HoursCyclesStep
 from commons.BaseStepView import BaseStepView
 
 class HoursCyclesStep(BaseStepView, Ui_HoursCyclesStep, QtWidgets.QWidget):

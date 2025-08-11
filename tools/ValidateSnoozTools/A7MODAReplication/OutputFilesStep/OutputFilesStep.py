@@ -3,8 +3,8 @@
     OutputFilesStep
     Step to select the path and name of the spindle events details.
 """
-from ValidateSnoozTools.ValidateSpindleDetectionA7.OutputFilesStep.Ui_OutputFilesStep import Ui_OutputFilesStep
-from ValidateSnoozTools.ValidateSpindleDetectionA7.SpindleDetectorSelStep.SpindleDetectorSelStep import SpindleDetectorSelStep
+from ValidateSnoozTools.A7MODAReplication.OutputFilesStep.Ui_OutputFilesStep import Ui_OutputFilesStep
+from ValidateSnoozTools.A7MODAReplication.SpindleDetectorSelStep.SpindleDetectorSelStep import SpindleDetectorSelStep
 from commons.BaseStepView import BaseStepView
 from flowpipe.ActivationState import ActivationState
 from widgets.WarningDialog import WarningDialog

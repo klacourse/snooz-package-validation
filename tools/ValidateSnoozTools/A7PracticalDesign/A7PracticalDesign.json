@@ -1,18 +1,18 @@
 {
-    "item_name": "ValidateSpindleDetectionA7",
+    "item_name": "A7PracticalDesign",
     "item_type": "tool",
     "item_api_version": "2.0.0",
     "item_url": "",
     "item_author": "",
     "item_description": "",
     "tool_params": {
-        "tool_label": "Validate A7",
+        "tool_label": "A7 Practical Design",
         "tool_category": "Validate",
         "asset_directory": "",
         "package_name": "ValidateSnoozTools",
         "steps": [
             {
-                "name": "A7 Detector",
+                "name": "A7 Practical Design",
                 "description": "",
                 "custom_step_name": "SpindleDetectionDoc",
                 "show_index": false,
