@@ -1,17 +1,18 @@
 {
-    "item_name": "SUMOPracticalDesign",
+    "item_name": "A7PracticalDesign",
     "item_type": "tool",
     "item_api_version": "2.0.0",
+    "item_url": "",
+    "item_author": "",
+    "item_description": "",
     "tool_params": {
-        "tool_label": "SUMO Practical Design",
-        "tool_category": "2-Processing",
-        "tool_author": "",
-        "tool_url": "",
-        "tool_description": "",
+        "tool_label": "A7 Practical Design",
+        "tool_category": "Validate",
+        "asset_directory": "",
         "package_name": "ValidateSnoozTools",
         "steps": [
             {
-                "name": "SUMO Practical Design",
+                "name": "A7 Practical Design",
                 "description": "",
                 "custom_step_name": "SpindleDetectionDoc",
                 "show_index": false,
@@ -42,7 +43,17 @@
                 "name": "Detection Settings",
                 "description": "Define detection settings",
                 "custom_step_name": "SpindleDetectorSelStep",
-                "show_index": true
+                "show_index": true,
+                "configs": {
+                    "label": "Algorithm Settings:",
+                    "list": [
+                        {
+                            "name": "A7 Settings",
+                            "description": "",
+                            "custom_step_name": "A7Settings"
+                        }
+                    ]
+                }
             },
             {
                 "name": "Output Files",
@@ -79,9 +90,86 @@
         }
     ],
     "process_params": {
-        "process_label": "Spindle Detection Sumo",
         "subgraph_params": {},
         "nodes": [
+            {
+                "cls": "SpindleDetectorA7",
+                "name": "SpindleDetectorA7",
+                "metadata": {},
+                "file_location": null,
+                "module": "CEAMSModules.SpindleDetectorA7",
+                "module_label": "Spindle Detector A7",
+                "module_category": "Detectors",
+                "module_author": "",
+                "module_url": "",
+                "module_description": "",
+                "module_options": {},
+                "inputs": {
+                    "signals": {
+                        "name": "signals",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {
+                            "a91be608-8be8-4f87-92f7-d2f83a759d8c": "signals"
+                        }
+                    },
+                    "thresholds": {
+                        "name": "thresholds",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {}
+                    },
+                    "event_group": {
+                        "name": "event_group",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {
+                            "53dc47dd-b65b-41d9-8534-c1d85c79363a": "constant"
+                        }
+                    },
+                    "event_name": {
+                        "name": "event_name",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {
+                            "73b79daf-92e6-46e1-9ff3-cceacbf273f3": "constant"
+                        }
+                    },
+                    "artifact_events": {
+                        "name": "artifact_events",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {
+                            "1301746b-9bd8-4829-b0c7-15c25e933685": "events_selected"
+                        }
+                    },
+                    "frequency_band": {
+                        "name": "frequency_band",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {}
+                    }
+                },
+                "outputs": {
+                    "events": {
+                        "name": "events",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {
+                            "9c352a25-80da-4fd5-bd90-e916a3252751": [
+                                "events1"
+                            ]
+                        }
+                    }
+                },
+                "identifier": "3d9c64ec-d7ab-4ea1-9d89-eb4204cfbdf9",
+                "activation_state": "activated",
+                "package": {
+                    "package_name": "CEAMSModules"
+                },
+                "pos_x": 537.0,
+                "pos_y": -226.0
+            },
             {
                 "cls": "DiscardEvents",
                 "name": "DiscardEvents",
@@ -101,13 +189,13 @@
                     },
                     "event_group": {
                         "name": "event_group",
-                        "value": "",
+                        "value": "MODA",
                         "sub_plugs": {},
                         "connections": {}
                     },
                     "event_name": {
                         "name": "event_name",
-                        "value": "",
+                        "value": "spindle",
                         "sub_plugs": {},
                         "connections": {}
                     },
@@ -155,71 +243,13 @@
                     }
                 },
                 "module": "CEAMSModules.DiscardEvents",
-                "identifier": "a3813151-dd91-40f9-97bc-bc3bd4b29d15",
+                "identifier": "d8f2e745-551a-423c-87da-443f14daa930",
                 "activation_state": "activated",
                 "package": {
                     "package_name": "CEAMSModules"
                 },
-                "pos_x": 1102.0,
-                "pos_y": 366.0
-            },
-            {
-                "cls": "SpindleDetectorSumo",
-                "name": "SpindleDetectorSumo",
-                "metadata": {},
-                "file_location": null,
-                "module": "CEAMSModules.SpindleDetectorSumo",
-                "module_label": "Spindle Detector Sumo",
-                "module_category": "Detectors",
-                "module_author": "",
-                "module_url": "",
-                "module_description": "",
-                "module_options": {},
-                "inputs": {
-                    "signals": {
-                        "name": "signals",
-                        "value": "",
-                        "sub_plugs": {},
-                        "connections": {
-                            "a91be608-8be8-4f87-92f7-d2f83a759d8c": "signals"
-                        }
-                    },
-                    "event_group": {
-                        "name": "event_group",
-                        "value": "",
-                        "sub_plugs": {},
-                        "connections": {
-                            "53dc47dd-b65b-41d9-8534-c1d85c79363a": "constant"
-                        }
-                    },
-                    "event_name": {
-                        "name": "event_name",
-                        "value": "",
-                        "sub_plugs": {},
-                        "connections": {
-                            "73b79daf-92e6-46e1-9ff3-cceacbf273f3": "constant"
-                        }
-                    }
-                },
-                "outputs": {
-                    "events": {
-                        "name": "events",
-                        "value": "",
-                        "sub_plugs": {},
-                        "connections": {
-                            "9c352a25-80da-4fd5-bd90-e916a3252751": [
-                                "events1"
-                            ]
-                        }
-                    }
-                },
-                "identifier": "fa7bbb2f-877a-4983-a722-9c46faa21234",
-                "activation_state": "activated",
-                "package": {
-                    "package_name": "CEAMSModules"
-                },
-                "pos_x": 588.0,
-                "pos_y": -254.0
+                "pos_x": 1058.0,
+                "pos_y": 364.0
             },
             {
                 "cls": "StringManip",
@@ -383,7 +413,7 @@
                     "package_name": "CEAMSModules"
                 },
                 "pos_x": 1319.0,
-                "pos_y": 61.0
+                "pos_y": 57.0
             },
             {
                 "cls": "EventCombine",
@@ -399,7 +429,7 @@
                         "value": "",
                         "sub_plugs": {},
                         "connections": {
-                            "a3813151-dd91-40f9-97bc-bc3bd4b29d15": "events"
+                            "d8f2e745-551a-423c-87da-443f14daa930": "events"
                         }
                     },
                     "event1_name": {
@@ -526,7 +556,7 @@
                         "value": "",
                         "sub_plugs": {},
                         "connections": {
-                            "a3813151-dd91-40f9-97bc-bc3bd4b29d15": [
+                            "d8f2e745-551a-423c-87da-443f14daa930": [
                                 "events"
                             ]
                         }
@@ -544,8 +574,8 @@
                 "package": {
                     "package_name": "CEAMSModules"
                 },
-                "pos_x": 760.2499999999998,
-                "pos_y": 423.7499999999998
+                "pos_x": 655.2499999999998,
+                "pos_y": 425.7499999999998
             },
             {
                 "cls": "FilterEvents",
@@ -717,8 +747,8 @@
                 "package": {
                     "package_name": "CEAMSModules"
                 },
-                "pos_x": 1871.7499999999995,
-                "pos_y": 381.7499999999999
+                "pos_x": 1852.7499999999995,
+                "pos_y": 409.7499999999999
             },
             {
                 "cls": "Constant",
@@ -1226,14 +1256,18 @@
                     },
                     "spindle_gen_param": {
                         "name": "spindle_gen_param",
-                        "value": "{'min_duration': 0.5, 'max_duration': 2.5, 'sleep_stage_sel': ['2', '3'], 'in_cycle': 1, 'exclude_nremp': 0, 'exclude_remp': 1}",
+                        "value": "{'min_duration': 0.5, 'max_duration': 2.5, 'sleep_stage_sel': ['2'], 'in_cycle': 0, 'exclude_nremp': 0, 'exclude_remp': 0}",
                         "sub_plugs": {},
                         "connections": {}
                     },
                     "spindle_sel_param": {
                         "name": "spindle_sel_param",
                         "value": {
-                            "spindle_name": "sumo"
+                            "spindle_name": "a7",
+                            "thresh_abs_sigma_pow_uv2": 1.25,
+                            "thresh_rel_sigma_pow_z": 1.6,
+                            "thresh_sigma_cov_z": 1.3,
+                            "thresh_sigma_cor_perc": 69.0
                         },
                         "sub_plugs": {},
                         "connections": {}
@@ -1337,14 +1371,18 @@
                     },
                     "spindle_gen_param": {
                         "name": "spindle_gen_param",
-                        "value": "{'min_duration': 0.5, 'max_duration': 2.5, 'sleep_stage_sel': ['2', '3'], 'in_cycle': 1, 'exclude_nremp': 0, 'exclude_remp': 1}",
+                        "value": "{'min_duration': 0.5, 'max_duration': 2.5, 'sleep_stage_sel': ['2'], 'in_cycle': 0, 'exclude_nremp': 0, 'exclude_remp': 0}",
                         "sub_plugs": {},
                         "connections": {}
                     },
                     "spindle_sel_param": {
                         "name": "spindle_sel_param",
                         "value": {
-                            "spindle_name": "sumo"
+                            "spindle_name": "a7",
+                            "thresh_abs_sigma_pow_uv2": 1.25,
+                            "thresh_rel_sigma_pow_z": 1.6,
+                            "thresh_sigma_cov_z": 1.3,
+                            "thresh_sigma_cor_perc": 69.0
                         },
                         "sub_plugs": {},
                         "connections": {}
@@ -1773,8 +1811,8 @@
                 },
                 "module": "CEAMSModules.SignalsFromEvents",
                 "identifier": "fbbf44ac-76ce-41b0-9ca9-306730affda5",
-                "pos_x": -392.40999999999985,
-                "pos_y": -349.975,
+                "pos_x": -419.40999999999985,
+                "pos_y": -204.97500000000002,
                 "activation_state": "activated",
                 "package": {
                     "package_name": "CEAMSModules"
@@ -1799,7 +1837,7 @@
                     },
                     "parameters": {
                         "name": "parameters",
-                        "value": "{'defined_option': 'Aeschbach 1993', 'Include_SOREMP': '1', 'Include_last_incompl': '1', 'Include_all_incompl': '1', 'dur_ends_REMP': '15', 'NREM_min_len_first': '15.0', 'NREM_min_len_mid_last': '15.0', 'NREM_min_len_val_last': '5.0', 'REM_min_len_first': '0.5', 'REM_min_len_mid': '5', 'REM_min_len_last': '0.5', 'mv_end_REMP': '1', 'sleep_stages': 'N2, N3, N4, R', 'details': '<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\\n<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\\np, li { white-space: pre-wrap; }\\nhr { height: 1px; border-width: 0; }\\nli.unchecked::marker { content: \"\\\\2610\"; }\\nli.checked::marker { content: \"\\\\2612\"; }\\n</style></head><body style=\" font-family:\\'Roboto\\'; font-size:12pt; font-weight:400; font-style:normal;\">\\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Adjust options based on [1].</p>\\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\\xa0</p>\\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">NREM-REMS cycles were defined [...] by the succession of a NREMS episode of at least 15 min duration and a REMS episode of at least 5 min duration. No minimal duration of the REMS episode was required for the completion of the first and last cycle. NREMS episodes were defined as the time interval between the first occurrence of stage 2 and the first occurrence of REMS within a cycle. Consequently REMS episodes were defined as the time intervals between two consecutive NREMS episodes or the time interval between the last NREMS episode and the final awakening. Thus occasional stage 1 epochs between REMS and stage 2 were included in the REMS episode. The reasons for selecting this criterion were the similarity of the EEG in REMS and stage 1, the better delimitation of cycle onset by using stage 2 instead of stage 1, and the fact that the initiation of cycle 1 with stage 2 corresponds to a frequently used criterion of sleep onset.</p>\\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\\xa0</p>\\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">[1] Aeschbach D, Borbely AA. All-night dynamics of the human sleep EEG. J Sleep Res. 1993 Jun; 2(2):70-81.<span style=\" color:#00ccff;\"> </span><a href=\"https://doi.org/10.1111/j.1365-2869.1993.tb00065.x\"><span style=\" text-decoration: underline; color:#00ccff;\">https://doi.org/10.1111/j.1365-2869.1993.tb00065.x</span></a></p></body></html>'}",
+                        "value": "{'defined_option': 'Minimum Criteria', 'Include_SOREMP': '1', 'Include_last_incompl': '1', 'Include_all_incompl': '1', 'dur_ends_REMP': '15', 'NREM_min_len_first': '0.0', 'NREM_min_len_mid_last': '0.0', 'NREM_min_len_val_last': '0.0', 'REM_min_len_first': '0', 'REM_min_len_mid': '0', 'REM_min_len_last': '0', 'mv_end_REMP': '0', 'sleep_stages': 'N1, N2, N3, N4, R', 'details': '<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\\n<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\\np, li { white-space: pre-wrap; }\\nhr { height: 1px; border-width: 0; }\\nli.unchecked::marker { content: \"\\\\2610\"; }\\nli.checked::marker { content: \"\\\\2612\"; }\\n</style></head><body style=\" font-family:\\'Roboto\\'; font-size:12pt; font-weight:400; font-style:normal;\">\\n<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\\'MS Shell Dlg 2\\';\">Adjust options based on minimum criteria.<br />These criteria are generally used in the clinic.</span></p></body></html>'}",
                         "sub_plugs": {},
                         "connections": {}
                     },
@@ -1982,7 +2020,7 @@
                 "inputs": {
                     "constant": {
                         "name": "constant",
-                        "value": "sumo",
+                        "value": "a7",
                         "sub_plugs": {},
                         "connections": {}
                     }
@@ -1990,13 +2028,13 @@
                 "outputs": {
                     "constant": {
                         "name": "constant",
-                        "value": "sumo",
+                        "value": "a7",
                         "sub_plugs": {},
                         "connections": {
                             "35e1a36a-814d-49e6-b1c4-7bfe78557d5d": [
                                 "constant"
                             ],
-                            "fa7bbb2f-877a-4983-a722-9c46faa21234": [
+                            "3d9c64ec-d7ab-4ea1-9d89-eb4204cfbdf9": [
                                 "event_name"
                             ]
                         }
@@ -2036,7 +2074,7 @@
                             "ea83e541-91c8-459d-a28d-07c7e8fd0297": [
                                 "constant"
                             ],
-                            "fa7bbb2f-877a-4983-a722-9c46faa21234": [
+                            "3d9c64ec-d7ab-4ea1-9d89-eb4204cfbdf9": [
                                 "event_group"
                             ]
                         }
@@ -2182,7 +2220,7 @@
                         "value": "",
                         "sub_plugs": {},
                         "connections": {
-                            "fa7bbb2f-877a-4983-a722-9c46faa21234": "events"
+                            "3d9c64ec-d7ab-4ea1-9d89-eb4204cfbdf9": "events"
                         }
                     },
                     "event1_name": {
@@ -2320,6 +2358,9 @@
                             ],
                             "72b044f1-c860-46ba-a075-2f5686c7c665": [
                                 "constant"
+                            ],
+                            "3d9c64ec-d7ab-4ea1-9d89-eb4204cfbdf9": [
+                                "artifact_events"
                             ]
                         }
                     },
@@ -2638,8 +2679,8 @@
                 },
                 "module": "CEAMSModules.Dictionary",
                 "identifier": "93f0bc13-163b-4ab9-9af8-9b1cceb519f7",
-                "pos_x": -1195.154924159211,
-                "pos_y": 106.02872346071149,
+                "pos_x": -1193.1549241592113,
+                "pos_y": 158.0287234607115,
                 "activation_state": "activated",
                 "package": {
                     "package_name": "CEAMSModules"
@@ -2738,7 +2779,7 @@
                         "value": "",
                         "sub_plugs": {},
                         "connections": {
-                            "fa7bbb2f-877a-4983-a722-9c46faa21234": [
+                            "3d9c64ec-d7ab-4ea1-9d89-eb4204cfbdf9": [
                                 "signals"
                             ]
                         }
@@ -2746,8 +2787,8 @@
                 },
                 "module": "CEAMSModules.ResetSignalArtefact",
                 "identifier": "a91be608-8be8-4f87-92f7-d2f83a759d8c",
-                "pos_x": -94.31469064967962,
-                "pos_y": -350.5453159124728,
+                "pos_x": -173.31469064967962,
+                "pos_y": -224.5453159124728,
                 "activation_state": "activated",
                 "package": {
                     "package_name": "CEAMSModules"
@@ -2815,8 +2856,8 @@
                 },
                 "module": "CEAMSModules.ResetSignalArtefact",
                 "identifier": "141974a3-d09b-4e05-9f85-a8a908d80449",
-                "pos_x": -989.9746628500202,
-                "pos_y": -300.9210718205886,
+                "pos_x": -1020.9746628500202,
+                "pos_y": -222.92107182058862,
                 "activation_state": "bypass",
                 "package": {
                     "package_name": "CEAMSModules"
@@ -3036,8 +3077,8 @@
                 },
                 "module": "CEAMSModules.Constant",
                 "identifier": "e633a33c-f4b8-4df1-972c-b60e1914edcb",
-                "pos_x": -974.2731465933136,
-                "pos_y": -25.750149170678483,
+                "pos_x": -995.2731465933136,
+                "pos_y": 39.24985082932152,
                 "activation_state": "activated",
                 "package": {
                     "package_name": "CEAMSModules"
@@ -3068,13 +3109,13 @@
                     },
                     "stages": {
                         "name": "stages",
-                        "value": "2,3",
+                        "value": "2",
                         "sub_plugs": {},
                         "connections": {}
                     },
                     "merge_events": {
                         "name": "merge_events",
-                        "value": "0",
+                        "value": "1",
                         "sub_plugs": {},
                         "connections": {}
                     },
@@ -3092,13 +3133,13 @@
                     },
                     "exclude_remp": {
                         "name": "exclude_remp",
-                        "value": "1",
+                        "value": "0",
                         "sub_plugs": {},
                         "connections": {}
                     },
                     "in_cycle": {
                         "name": "in_cycle",
-                        "value": "1",
+                        "value": "0",
                         "sub_plugs": {},
                         "connections": {}
                     }
@@ -3379,7 +3420,7 @@
                     },
                     "order": {
                         "name": "order",
-                        "value": "10",
+                        "value": "6",
                         "sub_plugs": {},
                         "connections": {}
                     },
@@ -3414,8 +3455,8 @@
                 "package": {
                     "package_name": "CEAMSModules"
                 },
-                "pos_x": -790.0,
-                "pos_y": -336.0
+                "pos_x": -823.0,
+                "pos_y": -204.0
             },
             {
                 "cls": "Resample",
@@ -3465,8 +3506,8 @@
                 "package": {
                     "package_name": "CEAMSModules"
                 },
-                "pos_x": -594.0,
-                "pos_y": -336.0
+                "pos_x": -633.0,
+                "pos_y": -205.0
             },
             {
                 "cls": "EventCombine",
@@ -3624,7 +3665,7 @@
                     },
                     "new_event_name": {
                         "name": "new_event_name",
-                        "value": "sumo_viewed",
+                        "value": "a7_viewed",
                         "sub_plugs": {},
                         "connections": {}
                     },
@@ -3653,8 +3694,8 @@
                 "package": {
                     "package_name": "CEAMSModules"
                 },
-                "pos_x": 1607.0,
-                "pos_y": 172.0
+                "pos_x": 1610.0,
+                "pos_y": 175.0
             }
         ]
     }
