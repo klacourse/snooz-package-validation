@@ -12,7 +12,7 @@ from qtpy.QtGui import QRegularExpressionValidator
 
 from commons.BaseStepView import BaseStepView
 from flowpipe.ActivationState import ActivationState
-from ValidateSnoozTools.A7PracticalDesign.A7Settings.Ui_A7Settings import Ui_A7Settings
+from CEAMSTools.SpindleDetectionA7.A7Settings.Ui_A7Settings import Ui_A7Settings
 
 
 class A7Settings( BaseStepView,  Ui_A7Settings, QtWidgets.QWidget):
@@ -30,7 +30,7 @@ class A7Settings( BaseStepView,  Ui_A7Settings, QtWidgets.QWidget):
         # Set input validators
         # Create a QRegularExpressionValidator with the desired regular expression
         # Regular expression for alphanumeric, space, dash, and latin1 (ISO/CEI 8859-1) characters
-        regex = QRegularExpression(r'^[a-zA-Z0-9ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ\s-_]*$')
+        regex = QRegularExpression(r'^[a-zA-Z0-9ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ\s_-]*$')
         validator = QRegularExpressionValidator(regex)
 
         # Set the validator for the QLineEdit
@@ -57,6 +57,8 @@ class A7Settings( BaseStepView,  Ui_A7Settings, QtWidgets.QWidget):
         self._pub_sub_manager.subscribe(self, self._spindle_param_a7_det_topic)
         self._spindle_param_a7_anal_topic = f'{self._node_id_SpindleDetails_anal}.spindle_sel_param'
         self._pub_sub_manager.subscribe(self, self._spindle_param_a7_anal_topic)
+        self._frequency_band_a7_topic = f'{self._node_id_SpindleA7}.frequency_band'
+        self._pub_sub_manager.subscribe(self, self._frequency_band_a7_topic)
 
         self._spindle_a7_param = {}
         self._spindle_a7_param['spindle_name'] = 'a7'
@@ -64,6 +66,9 @@ class A7Settings( BaseStepView,  Ui_A7Settings, QtWidgets.QWidget):
         self._spindle_a7_param['thresh_rel_sigma_pow_z'] = 1.6
         self._spindle_a7_param['thresh_sigma_cov_z'] = 1.3
         self._spindle_a7_param['thresh_sigma_cor_perc'] = 69
+        self._spindle_a7_freq_param = {}
+        self._spindle_a7_freq_param['low'] = 11
+        self._spindle_a7_freq_param['high'] = 16
     
 
     def load_settings(self):
@@ -72,6 +77,7 @@ class A7Settings( BaseStepView,  Ui_A7Settings, QtWidgets.QWidget):
         self._pub_sub_manager.publish(self, self._group_topic, 'ping')
         self._pub_sub_manager.publish(self, self._name_topic, 'ping')
         self._pub_sub_manager.publish(self, self._spindle_param_a7_det_topic, 'ping')
+        self._pub_sub_manager.publish(self, self._frequency_band_a7_topic, 'ping')
 
 
     def on_apply_settings(self):
@@ -85,9 +91,12 @@ class A7Settings( BaseStepView,  Ui_A7Settings, QtWidgets.QWidget):
         self._spindle_a7_param['thresh_rel_sigma_pow_z'] = self.doubleSpinBox_relSigma.value()
         self._spindle_a7_param['thresh_sigma_cov_z'] = self.doubleSpinBox_sigmaCov.value()
         self._spindle_a7_param['thresh_sigma_cor_perc'] = self.doubleSpinBox_sigmaCor.value()
+        self._spindle_a7_freq_param['low'] = self.doubleSpinBox_Lower_Bound.value()
+        self._spindle_a7_freq_param['high'] = self.doubleSpinBox_Upper_Bound.value()
         self._pub_sub_manager.publish(self, self._thresholds_a7_topic, self._spindle_a7_param)
         self._pub_sub_manager.publish(self, self._spindle_param_a7_det_topic, self._spindle_a7_param)
         self._pub_sub_manager.publish(self, self._spindle_param_a7_anal_topic, self._spindle_a7_param)
+        self._pub_sub_manager.publish(self, self._frequency_band_a7_topic, self._spindle_a7_freq_param)
         
 
     def on_topic_response(self, topic, message, sender):
@@ -98,6 +107,11 @@ class A7Settings( BaseStepView,  Ui_A7Settings, QtWidgets.QWidget):
                 message = eval(message)
             elif isinstance(message, dict):
                 self._spindle_a7_param = message
+        if topic == self._frequency_band_a7_topic:
+            if isinstance(message, str) and not message == '':  
+                message = eval(message)
+            elif isinstance(message, dict):
+                self._spindle_a7_freq_param = message
 
 
     # Called when a value listened is changed
@@ -114,3 +128,4 @@ class A7Settings( BaseStepView,  Ui_A7Settings, QtWidgets.QWidget):
             self._pub_sub_manager.unsubscribe(self, self._name_topic)
             self._pub_sub_manager.unsubscribe(self, self._spindle_param_a7_det_topic)
             self._pub_sub_manager.unsubscribe(self, self._spindle_param_a7_anal_topic)
+            self._pub_sub_manager.unsubscribe(self, self._frequency_band_a7_topic)

@@ -462,6 +462,15 @@
                         "connections": {
                             "1301746b-9bd8-4829-b0c7-15c25e933685": "events_selected"
                         }
+                    },
+                    "frequency_band": {
+                        "name": "frequency_band",
+                        "value": {
+                            "low": 11.0,
+                            "high": 16.0
+                        },
+                        "sub_plugs": {},
+                        "connections": {}
                     }
                 },
                 "outputs": {

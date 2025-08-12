@@ -15,7 +15,7 @@
                     "endpoint_name": "menu_endpoint",
                     "parameters": {
                         "menu_category": "Validate",
-                        "menu_label": "A7 Practical Design"
+                        "menu_label": "A7-Practical Design"
                     }
                 }
             ]
@@ -29,7 +29,7 @@
                     "endpoint_name": "menu_endpoint",
                     "parameters": {
                         "menu_category": "Validate",
-                        "menu_label": "SUMO Practical Design"
+                        "menu_label": "SUMO-Practical Design"
                     }
                 }
             ]

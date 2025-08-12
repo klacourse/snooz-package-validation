@@ -115,7 +115,13 @@
                     },
                     "thresholds": {
                         "name": "thresholds",
-                        "value": "",
+                        "value": {
+                            "spindle_name": "a7",
+                            "thresh_abs_sigma_pow_uv2": 1.25,
+                            "thresh_rel_sigma_pow_z": 1.6,
+                            "thresh_sigma_cov_z": 1.3,
+                            "thresh_sigma_cor_perc": 69.0
+                        },
                         "sub_plugs": {},
                         "connections": {}
                     },
@@ -145,7 +151,10 @@
                     },
                     "frequency_band": {
                         "name": "frequency_band",
-                        "value": "",
+                        "value": {
+                            "low": 11.0,
+                            "high": 16.0
+                        },
                         "sub_plugs": {},
                         "connections": {}
                     }
@@ -162,12 +171,12 @@
                         }
                     }
                 },
-                "identifier": "a8d3efd4-93c7-4818-b6ea-939221bba89e",
+                "identifier": "72b146ad-eca2-41b5-9994-87177883020e",
                 "activation_state": "activated",
                 "package": {
                     "package_name": "CEAMSModules"
                 },
-                "pos_x": 563.0,
+                "pos_x": 537.0,
                 "pos_y": -227.0
             },
             {
@@ -1953,7 +1962,7 @@
                             "35e1a36a-814d-49e6-b1c4-7bfe78557d5d": [
                                 "constant"
                             ],
-                            "a8d3efd4-93c7-4818-b6ea-939221bba89e": [
+                            "72b146ad-eca2-41b5-9994-87177883020e": [
                                 "event_name"
                             ]
                         }
@@ -1993,7 +2002,7 @@
                             "ea83e541-91c8-459d-a28d-07c7e8fd0297": [
                                 "constant"
                             ],
-                            "a8d3efd4-93c7-4818-b6ea-939221bba89e": [
+                            "72b146ad-eca2-41b5-9994-87177883020e": [
                                 "event_group"
                             ]
                         }
@@ -2139,7 +2148,7 @@
                         "value": "",
                         "sub_plugs": {},
                         "connections": {
-                            "a8d3efd4-93c7-4818-b6ea-939221bba89e": "events"
+                            "72b146ad-eca2-41b5-9994-87177883020e": "events"
                         }
                     },
                     "event1_name": {
@@ -2278,7 +2287,7 @@
                             "72b044f1-c860-46ba-a075-2f5686c7c665": [
                                 "constant"
                             ],
-                            "a8d3efd4-93c7-4818-b6ea-939221bba89e": [
+                            "72b146ad-eca2-41b5-9994-87177883020e": [
                                 "artifact_events"
                             ]
                         }
@@ -2698,7 +2707,7 @@
                         "value": "",
                         "sub_plugs": {},
                         "connections": {
-                            "a8d3efd4-93c7-4818-b6ea-939221bba89e": [
+                            "72b146ad-eca2-41b5-9994-87177883020e": [
                                 "signals"
                             ]
                         }
