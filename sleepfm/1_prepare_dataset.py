@@ -88,7 +88,7 @@ def main():
     parser = argparse.ArgumentParser(description="Process data and create a dataset")
     parser.add_argument("--dataset_dir", type=str, default=None, help="Path to the data directory")
     parser.add_argument("--random_state", type=int, default=42, help="Random state for train-test split")
-    parser.add_argument("--test_size", type=int, default=100, help="Size of test set")
+    parser.add_argument("--test_size", type=int, default=1, help="Size of test set")
     parser.add_argument("--debug", action="store_true", help="Debugging")
     parser.add_argument("--num_threads", type=int, default=4, help="Number of threads for parallel processing")
     parser.add_argument("--min_sample", type=int, default=-1, help="Sample dataset")
@@ -107,14 +107,21 @@ def main():
     path_to_X = os.path.join(dataset_dir, "X")
     mrns = os.listdir(path_to_X)
 
+    if ".DS_Store" in mrns:
+        mrns.remove(".DS_Store")
+    
     if args.debug:
         logger.info("Running in Debug Mode")
         mrns = mrns[:100]
     logger.info(f"Number of Mrns being processed: {len(mrns)}")
 
-    mrn_pretrain, mrn_train = train_test_split(mrns, test_size=0.25, random_state=random_state)
-    mrn_train, mrn_test = train_test_split(mrn_train, test_size=test_size, random_state=random_state)
-    mrn_train, mrn_valid = train_test_split(mrn_train, test_size=0.10, random_state=random_state)
+    mrn_pretrain, mrn_train = train_test_split(mrns, test_size=0.5, random_state=random_state)
+    # mrn_train, mrn_test = train_test_split(mrn_train, test_size=test_size, random_state=random_state) # uncomment
+    # mrn_train, mrn_valid = train_test_split(mrn_train, test_size=0.10, random_state=random_state) # uncomment
+
+    # for now, just for testing the code
+    mrn_test = mrn_train
+    mrn_valid = mrn_train
 
     mrn_pretrain = set(mrn_pretrain)
     mrn_train = set(mrn_train)

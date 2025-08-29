@@ -147,11 +147,11 @@ def get_arguments():
                         help="Path to the EDF files")
     parser.add_argument("--save_path", type=str, default=None, 
                         help="Path to save preprocessed data")
-    parser.add_argument("--num_files", type=int, default=10, 
+    parser.add_argument("--num_files", type=int, default=6, 
                         help="Number of files to process")
     parser.add_argument("--chunk_duration", type=float, default=30.0,
                         help="Duration of data chunks in seconds")
-    parser.add_argument("--num_threads", type=int, default=4,
+    parser.add_argument("--num_threads", type=int, default=6,
                             help="Number of threads for parallel processing")
     parser.add_argument("--target_sampling_rate", type=int, default=256,
                             help="Target Sampling of the dataset")
