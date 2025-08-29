@@ -1,0 +1,22 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python Debugger: Generate Embed Pretraining",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/sleepfm/3_generate_embed_pretraining.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}"
+            },
+            "args": [
+                "/Users/boshra/sleepfm-codebase/sleepfm/checkpoint",
+                "--splits", "train",
+            ]
+        }
+    ]
+}
+
+// "--splits", "train,test",

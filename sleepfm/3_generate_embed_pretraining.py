@@ -11,9 +11,11 @@ import numpy as np
 from loguru import logger
 import pickle
 import math
+from collections import OrderedDict
 
 import sys
-sys.path.append("../model")
+# sys.path.append("../model")
+sys.path.append(os.path.join(os.path.dirname(__file__), "model"))
 import models
 from config import (CONFIG, CHANNEL_DATA, 
                     ALL_CHANNELS, CHANNEL_DATA_IDS, 
@@ -25,7 +27,7 @@ from dataset import EventDataset as Dataset
 @click.argument("output_file", type=click.Path())
 @click.option("--dataset_dir", type=str, default=None)
 @click.option("--dataset_file", type=str, default="dataset_events_-1.pickle")
-@click.option("--batch_size", type=int, default=32)
+@click.option("--batch_size", type=int, default=2)
 @click.option("--num_workers", type=int, default=2)
 @click.option("--splits", type=click.STRING, default=['train', 'valid', 'test'], help='Specify the data splits (train, valid, test).')
 def generate_eval_embed(
@@ -39,9 +41,18 @@ def generate_eval_embed(
     if dataset_dir == None:
         dataset_dir = PATH_TO_PROCESSED_DATA
 
-    output_dir = os.path.join(dataset_dir, f"{output_file}")
+    # output_dir = os.path.join(dataset_dir, f"{output_file}")
+    output_dir = output_file
 
-    device = torch.device("cuda")
+    # device = torch.device("cuda")
+
+    if torch.cuda.is_available():
+        device = torch.device("cuda")
+    elif torch.backends.mps.is_available():
+        device = torch.device("mps")  # Apple GPU
+    else:
+        device = torch.device("cpu")
+
     splits = splits.split(",")
 
     path_to_data = dataset_dir
@@ -72,16 +83,52 @@ def generate_eval_embed(
         model_ekg = torch.nn.DataParallel(model_ekg)
     model_ekg.to(device)
 
-    checkpoint = torch.load(os.path.join(output_dir, "best.pt"))
+    checkpoint = torch.load(os.path.join(output_dir, "best.pt"), map_location=device)
     temperature = checkpoint["temperature"]
 
-    model_resp.load_state_dict(checkpoint["respiratory_state_dict"])
+    state_dict = checkpoint['resp_state_dict']  # or the correct key
+
+    # strip 'module.' prefix if it exists
+    new_state_dict = OrderedDict()
+    for k, v in state_dict.items():
+        if k.startswith("module."):
+            new_state_dict[k[7:]] = v  # remove "module."
+        else:
+            new_state_dict[k] = v
+
+    model_resp.load_state_dict(new_state_dict)
+
+    # model_resp.load_state_dict(checkpoint["resp_state_dict"])
     model_resp.eval()
 
-    model_sleep.load_state_dict(checkpoint["sleep_stages_state_dict"])
+    state_dict = checkpoint['sleep_state_dict']  # or the correct key
+
+    # strip 'module.' prefix if it exists
+    new_state_dict = OrderedDict()
+    for k, v in state_dict.items():
+        if k.startswith("module."):
+            new_state_dict[k[7:]] = v  # remove "module."
+        else:
+            new_state_dict[k] = v
+
+    print("Starting to load state dict...")
+    model_sleep.load_state_dict(new_state_dict, strict=False)
+    print("Finished loading state dict.")
+
+    # model_sleep.load_state_dict(new_state_dict, strict=False)
     model_sleep.eval()
 
-    model_ekg.load_state_dict(checkpoint["ekg_state_dict"])
+    state_dict = checkpoint['ekg_state_dict']  # or the correct key
+
+    # strip 'module.' prefix if it exists
+    new_state_dict = OrderedDict()
+    for k, v in state_dict.items():
+        if k.startswith("module."):
+            new_state_dict[k[7:]] = v  # remove "module."
+        else:
+            new_state_dict[k] = v
+
+    model_ekg.load_state_dict(new_state_dict)
     model_ekg.eval()
 
     path_to_save = os.path.join(output_dir, "eval_data")

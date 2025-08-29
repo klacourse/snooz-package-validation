@@ -15,8 +15,8 @@ CONFIG = types.SimpleNamespace(
 )
 
 #define the paths
-PATH_TO_RAW_DATA = "/oak/stanford/groups/mignot/rahul/data/challenge-2018/training/"
-PATH_TO_PROCESSED_DATA = "/oak/stanford/groups/mignot/rahul/pc18"
+PATH_TO_RAW_DATA = "/Users/boshra/sleepfm-codebase/training/"
+PATH_TO_PROCESSED_DATA = "/Users/boshra/sleepfm-codebase/sleepfm/processed/"
 
 # Define Sleep related global variables
 

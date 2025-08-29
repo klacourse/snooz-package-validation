@@ -1,0 +1,9 @@
+{
+    "name": "Debug generate_eval_embed",
+    "type": "python",
+    "request": "launch",
+    "program": "${file}",
+    "args": [
+        "outputs/output_leave_one_out_dataset_events_-1_lr_0.001_lr_sp_5_wd_0.0_bs_32_respiratory_sleep_stages_ekg"
+    ]
+}
